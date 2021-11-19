@@ -3,7 +3,7 @@
     
      <div class="bg-transparent ">
      <div class="flex justify-between items-center px-1 sm:px-5">
-         <NuxtLink class="text-xl sm:text-2xl font-bold" to="/">Zefto Solutions</NuxtLink>
+         <NuxtLink class="text-xl sm:text-2xl text-white font-bold" to="/">Zefto Solutions</NuxtLink>
          <div id="mySidenav" class="sidenav">
              <a href="javascript:void(0)" class="closebtn text-white" v-on:click="closeNav()">&times;</a>
              <NuxtLink :to="`/services/${1}`" class="link">Web</NuxtLink>
@@ -14,7 +14,7 @@
              <NuxtLink :to="`/services/${6}`" class="link">Mobile App</NuxtLink>
           </div>
          <div>
-             <button class="text-lg font-bold" v-on:click="openNav()">Menu</button>
+             <button class="text-lg text-white font-bold" v-on:click="openNav()">Menu</button>
          </div>
        </div>
        

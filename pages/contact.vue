@@ -1,7 +1,7 @@
 <template>
     <div>
-        <Nav/>
-        <div class="bg-img " :style="{backgroundImage: `url(` + require(`~/assets/images/je4.webp`) + `)`}">
+        <NavInner/>
+        <div class="bg-img " :style="{backgroundImage: `url(` + require(`~/assets/images/bg_contact.webp`) + `)`}">
         </div>
         <div class="mx-4 md:mx-16 grid grid-cols-1 md:grid-cols-4 gap-4 my-4 text-center md:text-left">
             <div class="bg-white rounded-3xl  shadow-md p-6 md:p-8 lg:px-12">
@@ -57,13 +57,100 @@
                 </div>
             </div>
         </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+            <div class="md:pl-12">
+                <div>
+   <!-- This shows a success message if the form was submitted correctly. -->
+    <div v-if="success" class="rounded bg-gray-700 text-white text-lg p-4">
+      Great! Your message has been sent successfully. We will try to respond
+      quickly.
+    </div>
+    <form v-else v-on:submit.prevent="sendMessage" class="grid grid-cols-1 gap-y-6">
+      <!-- Here an error is displayed if something goes wrong -->
+      <div v-if="errored" class="rounded bg-red-200 text-lg p-4">
+        {{errored}}
+      </div>
+      <div>
+        <label for="full_name" class="sr-only">Full name*</label>
+        <div class="rounded-md shadow-sm">
+          <input v-model="name" required name="name" id="full_name" class="form-input block w-full py-2 px-4 placeholder-gray-500 transition ease-in-out duration-150" placeholder="Full name*" />
+        </div>
+      </div>
+      <div>
+        <label for="email" class="sr-only">Email*</label>
+        <div class=" rounded-md shadow-sm">
+          <input required v-model="email" name="email" id="email" type="email" class="form-input block w-full py-2 px-4 placeholder-gray-500 transition ease-in-out duration-150" placeholder="Email*" />
+        </div>
+      </div>
+      <div>
+        <label for="phone" class="sr-only">Phone</label>
+        <div class="rounded-md shadow-sm">
+          <input v-model="phone" name="phone" id="phone" class="form-input block w-full py-2 px-4 placeholder-gray-500 transition ease-in-out duration-150" placeholder="Phone" />
+        </div>
+      </div>
+      <div>
+        <label for="message" class="sr-only">Message</label>
+        <div class="rounded-md shadow-sm">
+          <textarea required v-model="message" name="message" id="message" rows="4" class="form-input block w-full py-2 px-4 placeholder-gray-500 transition ease-in-out duration-150" placeholder="Message*" ></textarea>
+        </div>
+      </div>
+      <div class="text-center md:text-right">
+        <span class="inline-flex rounded-md shadow-sm">
+          <button type="submit" class="inline-flex justify-center py-2 px-6 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-black hover:bg-gray-700 focus:outline-none focus:border-gray-700 focus:shadow-outline-black active:bg-gray-800 transition duration-150 ease-in-out">
+            {{ loading ? "Sending Message..." : "Submit" }}
+          </button>
+        </span>
+      </div>
+    </form>
+  </div>
+            </div>
+            <div class="text-right md:pr-12">
+                         <iframe id="gmap_canvas" class="w-full" height="375" src="https://maps.google.com/maps?q=zefto%20solutions,%20mawanella&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                         </iframe>
+                         <a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a>
+                    
+                </div>
+            </div>
     </div>
 </template>
 
 <script>
     export default {
-        
-    }
+        data() {
+    return {
+      loading: false,
+      success: false,
+      errored: false,
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    };
+  },
+  methods: {
+    sendMessage() {
+      this.loading = true;
+      this.$axios
+        .post("http://localhost:1337/inquiries", {
+          name: this.name,
+          email: this.email,
+          phone: this.phone,
+          message: this.message,
+        }).then(response => {
+          this.success = true
+          this.errored =false
+        })
+        .catch(error => {
+          this.errored = true
+        })
+        .finally(() => {
+          this.loading = false
+        });
+    },
+  }
+};
+    
 </script>
 
 <style lang="css" scoped>
@@ -72,6 +159,6 @@
         background-repeat:  no-repeat;
         background-attachment: fixed;
         background-size:  cover;
-        height: 25vh;
+        height: 30vh;
  }
 </style>

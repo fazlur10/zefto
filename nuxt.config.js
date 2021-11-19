@@ -1,4 +1,5 @@
 export default {
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -43,7 +44,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/strapi',
   ],
+  
+  strapi: {
+    entities: ['inquiries'],
+    url: 'http://localhost:1337'
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},

@@ -2,7 +2,7 @@
   <div class="fixed w-full ">
      <div class="text-center bg-gray-100 p-2">
         <span class="border-b border-gray-600 hover:border-gray-900">
-         <NuxtLink to="/">Read Zefto Solution's future plans</NuxtLink>
+         <a href="https://www.msn.com/en-xl/money/tech-and-science/nasa-spacex-set-to-launch-space-station-s-next-crew-to-orbit/ar-AAQxClO?ocid=msedgdhp&pc=U531">NASA, SpaceX set to launch space station's next crew to orbit</a>
         </span>
      </div>
      <div class="bg-transparent ">
@@ -24,7 +24,7 @@
        
      </div>
      <div class="mt-96 text-center">
-        <NuxtLink class="text-white bg-black py-5 px-10 rounded-full" to="/contact">Custom Order</NuxtLink>
+        <NuxtLink class="text-white bg-black py-5 px-10 rounded-full" to="/contact">Contact Us</NuxtLink>
      </div>
  </div>
     

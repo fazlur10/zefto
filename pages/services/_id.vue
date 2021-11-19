@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <Nav/>
+<div>
+  <Nav/>
     <div v-if="service">
-        <div class="h-screen bg-img table border-collapse w-full" :style="{backgroundImage: `url(` + require(`~/assets/images/${service.image}`) + `)`}">
-          <div class="text-center pt-20">
+     <div v-for="image in service.image" :key="image.id">
+          <div  class="h-screen bg-img table border-collapse w-full" :style="{ backgroundImage: 'url('+'http://localhost:1337' + image.url + ')' }">
+           <div class="text-center pt-20">
              <h4 class="text-gray-700 font-bold text-3xl">
                {{ service.title }}
             </h4>
@@ -14,39 +15,68 @@
              </p>
              <button class="text-white bg-black py-5 px-10 rounded-full mt-4">Make an appointment</button>
           </div>
-        </div>
-        <div class="bg-black text-white py-6">
-            <div>
-                  <video class="h-96 w-full sm:p-10 p-2"
-                    :src="require(`~/assets/videos/${service.video}`)" controls autoplay></video>
+          </div>
+           
+           <div class="bg-black text-white py-6">
+             <div v-for="video in service.video" :key="video.id">
+               <div>
+                  <video class="h-96 w-full sm:p-10 p-2 object-fill"
+                    :src="'http://localhost:1337'+video.url" autoplay loop controls></video>
+              </div>
             </div>
-            <div class="flex justify-center">
-            <table class="text-lg font-bold">
-                <tr v-for="card in service.cards" :key="card.id" :card="card" class="border-b border-white"> 
-                     <td class="p-1">{{card.title}}</td>
-                     <td class="pl-8 py-1"> Starts from ${{card.price}}</td>
-                </tr>
-            </table>
+
+
+            <div v-for="card in service.cards" :key="card.id" :card="card" class="mx-4 text-white md:mx-16 grid grid-cols-1 md:grid-cols-4 gap-4 my-4 text-center md:text-left">
+                
+                 <div v-for="image in card.image" :key="image.id" class="md:col-span-1">
+                        <img  :src="'http://localhost:1337'+image.url" class="rounded-2xl">
+                 </div>
+                 <div v-if="card.image.length==0">
+                      <img  :src="require(`~/assets/images/fe1.webp`)" class="rounded-2xl">
+                 </div>
+                 
+                <div class="text-white p-2  lg:px-12 md:col-span-3">
+                  <h1 class="text-xl my-2">{{card.title}} </h1>
+                  <p class="text-sm mb-2" v-if="card.description != null">{{card.description}} </p>
+                  <p class="text-sm mb-2" v-else>No available description, Contact us to know more </p>
+                   <h2 class="text-xl" v-if="card.price != null"> Starts from ${{card.price}}</h2>
+                   <h2 class="text-xl" v-else> </h2>
+                </div>
             </div>
-        </div>
+
+
+           </div>
+           
+     </div>
     </div>
     <div v-else >
         <h1>Not found</h1>
     </div>
-   </div>
+</div>
 </template>
 
 <script>
-    export default {
-       computed:{
-           service(){
-               return this.$store.getters.getServiceById(this.$route.params.id)
-           }
-       }  
+import axios from 'axios'
+
+export default {
+  name: 'App',
+  data () {
+    return {
+      service: [],
+      error: null
     }
+  },
+  async mounted () {
+    try {
+      const response = await axios.get('http://localhost:1337/services/'+this.$route.params.id)
+
+      this.service = response.data
+    } catch (error) {
+      this.error = error;
+    }
+  }
+}
 </script>
-
-
 <style lang="css" scoped>
  .bg-img {
         background-position: center center;

@@ -1,6 +1,6 @@
 <template>
     <div class="h-screen bg-img " :style="{backgroundImage: `url(` + require(`~/assets/images/${cardsSection.image}`) + `)`}">
-      <div class="text-center pt-20">
+      <div class="text-center pt-40 sm:pt-20">
          <h4 class="font-bold text-3xl">
             {{ cardsSection.title }}
          </h4>
