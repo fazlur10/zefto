@@ -5,7 +5,7 @@
      <div v-for="image in service.image" :key="image.id">
           <div  class="h-screen bg-img table border-collapse w-full" :style="{ backgroundImage: 'url('+'http://localhost:1337' + image.url + ')' }">
            <div class="text-center pt-20">
-             <h4 class="text-gray-700 font-bold text-3xl">
+             <h4 class="text-gray-600 font-bold text-3xl">
                {{ service.title }}
             </h4>
           </div>
@@ -21,7 +21,7 @@
              <div v-for="video in service.video" :key="video.id">
                <div>
                   <video class="h-96 w-full sm:p-10 p-2 object-fill"
-                    :src="'http://localhost:1337'+video.url" autoplay loop controls></video>
+                    :src="'http://localhost:1337'+video.url" autoplay loop></video>
               </div>
             </div>
 
