@@ -48,7 +48,7 @@ export default {
   ],
   
   strapi: {
-    entities: ['inquiries'],
+    entities: ['inquiries','appointments'],
     url: 'http://localhost:1337'
   },
 
