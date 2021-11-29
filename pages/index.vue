@@ -6,6 +6,7 @@
       :key="cardInfo.id" 
       :cardsSection="cardInfo"
    />
+   <Footer/>
 </div>
 
 </template>

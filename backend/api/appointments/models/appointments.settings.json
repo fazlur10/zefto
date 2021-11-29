@@ -22,10 +22,12 @@
       "type": "string"
     },
     "date": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "time": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

@@ -23,9 +23,11 @@
        </div>
        
      </div>
+<!--
      <div class="mt-96 text-center">
         <NuxtLink class="text-white bg-black py-5 px-10 rounded-full" to="/contact">Contact Us</NuxtLink>
      </div>
+-->
  </div>
     
 </template>

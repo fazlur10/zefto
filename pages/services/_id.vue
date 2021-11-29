@@ -9,11 +9,11 @@
                {{ service.title }}
             </h4>
           </div>
-          <div class="w-full text-center table-row align-bottom h-1/3">
-             <p class="text-white font-bold text-lg px-4 sm:px-72 ">
+          <div class="w-full text-center table-row sm:align-bottom sm:h-1/3">
+             <p class="text-white font-bold text-lg px-4 sm:px-72 mb-8">
                {{ service.snippet }}
              </p>
-             <button class="text-white bg-black py-5 px-10 rounded-full mt-4">Make an appointment</button>
+              <NuxtLink class="text-white bg-black py-5 px-10 rounded-full " to="/appointment">Make an appointment</NuxtLink>
           </div>
           </div>
            
@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-
+<FooterInner/>
            </div>
            
      </div>
@@ -52,6 +52,7 @@
     <div v-else >
         <h1>Not found</h1>
     </div>
+    
 </div>
 </template>
 

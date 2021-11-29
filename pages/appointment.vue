@@ -70,12 +70,11 @@
   </div>
             </div>
             <div class="text-right md:pr-12">
-                         <iframe id="gmap_canvas" class="w-full" height="375" src="https://maps.google.com/maps?q=zefto%20solutions,%20mawanella&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                         </iframe>
-                         <a href="https://www.embedgooglemap.net/blog/divi-discount-code-elegant-themes-coupon/"></a>
+                        <img class="w-full" height="375" :src="require(`~/assets/images/appointment_bg.webp`)" >
                     
                 </div>
             </div>
+     <FooterOther/>
     </div>
 </template>
 
