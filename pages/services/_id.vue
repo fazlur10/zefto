@@ -3,7 +3,7 @@
   <Nav/>
     <div v-if="service">
      <div v-for="image in service.image" :key="image.id">
-          <div  class="h-screen bg-img table border-collapse w-full" :style="{ backgroundImage: 'url('+'http://localhost:1337' + image.url + ')' }">
+          <div  class="h-screen bg-img table border-collapse w-full" :style="{ backgroundImage: 'url('+'https://zefto.herokuapp.com' + image.url + ')' }">
            <div class="text-center pt-20">
              <h4 class="text-gray-600 font-bold text-3xl">
                {{ service.title }}
@@ -21,7 +21,7 @@
              <div v-for="video in service.video" :key="video.id">
                <div>
                   <video class="h-96 w-full sm:p-10 p-2 object-fill"
-                    :src="'http://localhost:1337'+video.url" autoplay loop></video>
+                    :src="'https://zefto.herokuapp.com'+video.url" autoplay loop></video>
               </div>
             </div>
 
@@ -29,7 +29,7 @@
             <div v-for="card in service.cards" :key="card.id" :card="card" class="mx-4 text-white md:mx-16 grid grid-cols-1 md:grid-cols-4 gap-4 my-4 text-center md:text-left">
                 
                  <div v-for="image in card.image" :key="image.id" class="md:col-span-1">
-                        <img  :src="'http://localhost:1337'+image.url" class="rounded-2xl">
+                        <img  :src="'https://zefto.herokuapp.com'+image.url" class="rounded-2xl">
                  </div>
                  <div v-if="card.image.length==0">
                       <img  :src="require(`~/assets/images/fe1.webp`)" class="rounded-2xl">
@@ -69,7 +69,7 @@ export default {
   },
   async mounted () {
     try {
-      const response = await axios.get('http://localhost:1337/services/'+this.$route.params.id)
+      const response = await axios.get('https://zefto.herokuapp.com/services/'+this.$route.params.id)
 
       this.service = response.data
     } catch (error) {
