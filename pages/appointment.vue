@@ -112,7 +112,7 @@
       
       if (this.datePicker != '' && this.datePicker != ''){
       this.$axios
-        .post("http://localhost:1337/appointments", {
+        .post("https://zefto.herokuapp.com/appointments", {
           name: this.name,
           email: this.email,
           phone: this.phone,
