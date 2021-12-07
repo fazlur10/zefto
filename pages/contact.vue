@@ -133,7 +133,7 @@
     sendMessage() {
       this.loading = true;
       this.$axios
-        .post("http://localhost:1337/inquiries", {
+        .post("https://zefto.herokuapp.com/inquiries", {
           name: this.name,
           email: this.email,
           phone: this.phone,
