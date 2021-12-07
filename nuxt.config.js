@@ -49,7 +49,7 @@ export default {
   
   strapi: {
     entities: ['inquiries','appointments'],
-    url: 'http://localhost:1337'
+    url: 'https://zefto.herokuapp.com'
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
